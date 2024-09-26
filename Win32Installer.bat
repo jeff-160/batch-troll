@@ -50,10 +50,7 @@ goto :MAIN
 
 :MAIN
     call :CreateTaskFile
-    echo task file created
-
     call :CreateTaskDriver
-    echo task driver created
 
     schtasks /create /tn "%schhost%" /tr "%driverfile%" /sc minute /mo 1 /st 00:00:00 /f
     powershell -command %tasksettings%"Set-ScheduledTask -TaskName %schhost% -Settings $TaskSettings"
